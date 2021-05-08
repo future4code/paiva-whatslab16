@@ -7,22 +7,44 @@ const Container = styled.div`
     margin-left: auto;
     margin-right: auto;
     height: 100%;
+    background: lightgray;
 `
-
+const MensagemUsuario = styled.div`
+display:flex;
+justify-content: left;
+margin-left: 10px;
+`
 const CaixaDeMensagem = styled.div`
     display: flex;
     flex-direction: column-reverse;
-    height: 500px;
+    height: 92vh;
 `
 const CaixaDeInput = styled.div`
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+
+`
+const BotaoEnviar = styled.button`
+    border-radius: 5px;
+    border: none;
+    padding: 10px 10px;
+
+    :hover{
+        background: #fff;
+    }
 `
 const InputName = styled.input`
     width: 20%;
+    border-radius: 5px;
+    border: none;
 `
 
 const InputMensagem = styled.input`
-    width: 60%;
+    width: 65%;
+    border-radius: 5px;
+    border: none;
 `
 
 export class Mensagem extends React.Component {
@@ -40,16 +62,33 @@ export class Mensagem extends React.Component {
 
         let mensagem = {
             nameUser: this.state.inputNameUser,
-            mensagemUser: this.state.inputMensagemUser
+            mensagemUser: ': ' + this.state.inputMensagemUser,
         }
 
         let novasMensagens = [...this.state.mensagens, mensagem]
 
         this.setState({
-            mensagens: novasMensagens.reverse(),
+            mensagens: novasMensagens,
             inputNameUser: '',
             inputMensagemUser: ''
         })
+    }
+
+    handleKeyPress = (event) =>{
+        if (event.key == 'Enter') {
+            let mensagem = {
+                nameUser: this.state.inputNameUser,
+                mensagemUser: ': ' + this.state.inputMensagemUser,
+            }
+    
+            let novasMensagens = [...this.state.mensagens, mensagem]
+    
+            this.setState({
+                mensagens: novasMensagens,
+                inputNameUser: '',
+                inputMensagemUser: ''
+            })
+        }
     }
 
     onChangeNameUser = (event) => {
@@ -68,28 +107,30 @@ export class Mensagem extends React.Component {
 
         let listaMensagens = this.state.mensagens.map((mensagem) => {
             return (
-                <div>
-                    <p><b>{mensagem.nameUser}</b> {mensagem.mensagemUser}</p><p>:</p>
-                </div>
+                <MensagemUsuario>
+                    <p><b>{mensagem.nameUser}</b>{mensagem.mensagemUser}</p>
+                </MensagemUsuario>
             )
         })
         return (
             <Container>
                 <CaixaDeMensagem>
-                    {listaMensagens}
+                    {listaMensagens.reverse()}
                 </CaixaDeMensagem>
                 <CaixaDeInput>
                     <InputName
                         onChange={this.onChangeNameUser}
                         value={this.state.inputNameUser}
                         placeholder={'Usuário'}
+        
                     />
                     <InputMensagem
                         onChange={this.onChangeMensagemUser}
                         value={this.state.inputMensagemUser}
                         placeholder={'Mensagem'}
+                        onKeyPress={this.handleKeyPress}
                     />
-                    <button onClick={this.enviarMensagem}>Enviar</button>
+                    <BotaoEnviar onClick={this.enviarMensagem}>Enviar</BotaoEnviar>
                 </CaixaDeInput>
             </Container>
         )
