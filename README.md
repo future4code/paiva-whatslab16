@@ -14,7 +14,7 @@ http://greedy-move.surge.sh/
 <table>
   <tr>
     <td align="center"><a href="https://github.com/Biancasleonardo"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/61589574?v=4" width="100px;" alt=""/><br /><sub><b>Bianca Leonardo</b></sub></a><br />
-    <td align="center"><a href="https://github.com/priscilaferrari"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/81268269?v=4" width="100px;" alt=""/><br /><sub><b>Guilherme Soutello</b></sub></a><br />
+    <td align="center"><a href="https://github.com/priscilaferrari"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/81268269?v=4" width="100px;" alt=""/><br /><sub><b>Priscila Ferrari</b></sub></a><br />
   </tr>
 </table>
 
